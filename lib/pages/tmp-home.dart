@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_app/pages/detail.dart';
 import 'package:travel_app/style/asset_name.dart';
 import 'package:travel_app/style/theme.dart';
@@ -42,96 +41,49 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Widget navButton(int index, String activeIcon, String inactiveIcon) {
-    //   return Expanded(
-    //     flex: 1,
-    //     child: Container(
-    //       color: navBg,
-    //       padding: EdgeInsets.all(5),
-    //       child: ElevatedButton(
-    //         style: ElevatedButton.styleFrom(
-    //           primary: navBg,
-    //           elevation: 0,
-    //           shape: new RoundedRectangleBorder(
-    //             borderRadius: new BorderRadius.circular(15),
-    //           ),
-    //         ),
-    //         onPressed: () {
-    //           updateBool(index);
-    //           setState(() {});
-    //         },
-    //         child: Column(
-    //           mainAxisAlignment: MainAxisAlignment.center,
-    //           children: <Widget>[
-    //             SvgPicture.asset(
-    //               navStatus[index] ? activeIcon : inactiveIcon,
-    //               color: navStatus[index] ? orangeColor : navInactiveColor,
-    //               width: navStatus[index] ? 28 : 24,
-    //               height: navStatus[index] ? 28 : 24,
-    //             ),
-    //             SizedBox(height: 1),
-    //             Visibility(
-    //               maintainSize: true,
-    //               maintainAnimation: true,
-    //               maintainState: true,
-    //               visible: navStatus[index] ? true : false,
-    //               child: Container(
-    //                 width: context.w(6),
-    //                 height: context.h(6),
-    //                 decoration: BoxDecoration(
-    //                   color: Color(0xffFF480A),
-    //                   shape: BoxShape.circle,
-    //                 ),
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   );
-    // }
-
     Widget navButton(int index, String activeIcon, String inactiveIcon) {
       return Expanded(
         flex: 1,
         child: Container(
           color: navBg,
           padding: EdgeInsets.all(5),
-          child: Material(
-            clipBehavior: Clip.antiAlias,
-            borderRadius: BorderRadius.circular(12.0),
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () {
-                updateBool(index);
-                setState(() {});
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SvgPicture.asset(
-                    navStatus[index] ? activeIcon : inactiveIcon,
-                    color: navStatus[index] ? orangeColor : navInactiveColor,
-                    width: navStatus[index] ? 28 : 24,
-                    height: navStatus[index] ? 28 : 24,
-                  ),
-                  SizedBox(height: 1),
-                  Visibility(
-                    maintainSize: true,
-                    maintainAnimation: true,
-                    maintainState: true,
-                    visible: navStatus[index] ? true : false,
-                    child: Container(
-                      width: context.w(6),
-                      height: context.h(6),
-                      decoration: BoxDecoration(
-                        color: Color(0xffFF480A),
-                        shape: BoxShape.circle,
-                      ),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: navBg,
+              elevation: 0,
+              shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(15),
+              ),
+            ),
+            onPressed: () {
+              updateBool(index);
+              setState(() {});
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SvgPicture.asset(
+                  navStatus[index] ? activeIcon : inactiveIcon,
+                  color: navStatus[index] ? orangeColor : navInactiveColor,
+                  width: navStatus[index] ? 28 : 24,
+                  height: navStatus[index] ? 28 : 24,
+                ),
+                SizedBox(height: 1),
+                Visibility(
+                  maintainSize: true,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  visible: navStatus[index] ? true : false,
+                  child: Container(
+                    width: context.w(6),
+                    height: context.h(6),
+                    decoration: BoxDecoration(
+                      color: Color(0xffFF480A),
+                      shape: BoxShape.circle,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -580,51 +532,59 @@ class _CategoriesScrollerState extends State<CategoriesScroller> {
 Widget itemSection(BuildContext context) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: context.w(24)),
-    child: InkWell(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => DetailPage()),
-      ),
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: context.h(15)),
-            width: context.w(245),
-            height: context.h(401),
-            decoration: BoxDecoration(
-              color: Color(0xff000000).withOpacity(0),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xff02020B).withOpacity(0.5),
-                  blurRadius: 20,
-                  offset: Offset(0, 5), // Shadow position
-                ),
-              ],
-            ),
-          ),
-          Hero(
-            tag: "ContohTag",
-            child: Container(
-              width: context.w(327),
-              height: context.h(401),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(32),
-                ),
-                image: DecorationImage(
-                  image: AssetImage(AssetName.image1),
-                  fit: BoxFit.cover,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xff02020B).withOpacity(0.6),
-                    blurRadius: 5,
-                    offset: Offset(0, 3), // Shadow position
-                  ),
-                ],
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        // shadow di bawah card
+        Container(
+          margin: EdgeInsets.only(top: context.h(15)),
+          width: context.w(245),
+          height: context.h(401),
+          decoration: BoxDecoration(
+            color: Color(0xff000000).withOpacity(0),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xff02020B).withOpacity(0.5),
+                blurRadius: 20,
+                offset: Offset(0, 5), // Shadow position
               ),
-              child: Column(
+            ],
+          ),
+        ),
+        // isi card / item
+        Container(
+          width: context.w(327),
+          height: context.h(401),
+          child: Stack(
+            children: [
+              InkWell(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailPage()),
+                ),
+                child: Hero(
+                  tag: "ContohTag",
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(32),
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage(AssetName.image1),
+                        fit: BoxFit.cover,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xff02020B).withOpacity(0.6),
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // Shadow position
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Column(
                 children: [
                   Align(
                     alignment: Alignment.topRight,
@@ -638,26 +598,19 @@ Widget itemSection(BuildContext context) {
                           Radius.circular(12),
                         ),
                         child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                          child: Material(
-                            clipBehavior: Clip.antiAlias,
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                              child: Container(
-                                width: context.w(48),
-                                height: context.h(48),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(color: blurColor),
-                                child: Container(
-                                  width: context.w(24),
-                                  height: context.w(24),
-                                  child: ImageIcon(
-                                    AssetImage(AssetName.ic_love),
-                                    color: whiteColor,
-                                  ),
-                                ),
+                          filter:
+                              ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                          child: Container(
+                            width: context.w(48),
+                            height: context.h(48),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(color: blurColor),
+                            child: Container(
+                              width: context.w(24),
+                              height: context.w(24),
+                              child: ImageIcon(
+                                AssetImage(AssetName.ic_love),
+                                color: whiteColor,
                               ),
                             ),
                           ),
@@ -676,16 +629,14 @@ Widget itemSection(BuildContext context) {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            RichText(
-                              text: TextSpan(
-                                text: "Kanlaya's Eyrie",
-                                style: GoogleFonts.dmSans(
-                                    color: whiteColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700),
+                            Text(
+                              "Kanlaya's Eyrie",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: whiteColor,
                               ),
                             ),
-                            SizedBox(height: context.h(6)),
                             Row(
                               children: [
                                 SvgPicture.asset(
@@ -695,13 +646,12 @@ Widget itemSection(BuildContext context) {
                                   color: whiteColor,
                                 ),
                                 SizedBox(width: context.w(4)),
-                                RichText(
-                                  text: TextSpan(
-                                    text: "Pang Mapha, Thailand",
-                                    style: GoogleFonts.dmSans(
-                                        color: whiteColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500),
+                                Text(
+                                  "Pang Mapha, Thailand",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: whiteColor,
                                   ),
                                 ),
                               ],
@@ -735,10 +685,10 @@ Widget itemSection(BuildContext context) {
                   ),
                 ],
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     ),
   );
 }
