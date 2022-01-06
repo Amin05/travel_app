@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/pages/home.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/pages/preview.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: HomePage(),
+      home: PreviewPage(),
     );
   }
 }

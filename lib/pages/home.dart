@@ -178,77 +178,80 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // membuat bottom navigation
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(
-                  context.w(24), 0, context.w(24), context.h(22)),
-              child: Stack(alignment: Alignment.topCenter, children: [
-                Container(
-                  margin: EdgeInsets.only(top: context.h(6)),
-                  width: context.w(210),
-                  height: context.h(75),
-                  decoration: BoxDecoration(
-                    color: Color(0xff000000).withOpacity(0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xff02020B).withOpacity(0.5),
-                        blurRadius: 20,
-                        offset: Offset(0, 5), // Shadow position
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: context.h(75),
-                  decoration: BoxDecoration(
-                    color: navBg,
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xff02020B).withOpacity(0.6),
-                        blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
-                      )
-                    ],
-                    // border: Border.all(color: context.borderBottomNavColor),
-                    // color: context.borderBottomNavColor,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: context.w(35),
-                      vertical: context.h(10),
+          Hero(
+            tag: "bottom",
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                    context.w(24), 0, context.w(24), context.h(22)),
+                child: Stack(alignment: Alignment.topCenter, children: [
+                  Container(
+                    margin: EdgeInsets.only(top: context.h(6)),
+                    width: context.w(210),
+                    height: context.h(75),
+                    decoration: BoxDecoration(
+                      color: Color(0xff000000).withOpacity(0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xff02020B).withOpacity(0.5),
+                          blurRadius: 20,
+                          offset: Offset(0, 5), // Shadow position
+                        ),
+                      ],
                     ),
-                    child: Container(
-                        color: navBg,
-                        child: Row(
-                          children: [
-                            navButton(
-                              0,
-                              AssetName.bold_home,
-                              AssetName.light_home,
-                            ),
-                            navButton(
-                              1,
-                              AssetName.bold_location,
-                              AssetName.light_location,
-                            ),
-                            navButton(
-                              2,
-                              AssetName.bold_calendar,
-                              AssetName.light_calendar,
-                            ),
-                            navButton(
-                              3,
-                              AssetName.bold_profile,
-                              AssetName.light_profile,
-                            ),
-                          ],
-                        )),
                   ),
-                ),
-              ]),
+                  Container(
+                    width: double.infinity,
+                    height: context.h(75),
+                    decoration: BoxDecoration(
+                      color: navBg,
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xff02020B).withOpacity(0.6),
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // changes position of shadow
+                        )
+                      ],
+                      // border: Border.all(color: context.borderBottomNavColor),
+                      // color: context.borderBottomNavColor,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.w(35),
+                        vertical: context.h(10),
+                      ),
+                      child: Container(
+                          color: navBg,
+                          child: Row(
+                            children: [
+                              navButton(
+                                0,
+                                AssetName.bold_home,
+                                AssetName.light_home,
+                              ),
+                              navButton(
+                                1,
+                                AssetName.bold_location,
+                                AssetName.light_location,
+                              ),
+                              navButton(
+                                2,
+                                AssetName.bold_calendar,
+                                AssetName.light_calendar,
+                              ),
+                              navButton(
+                                3,
+                                AssetName.bold_profile,
+                                AssetName.light_profile,
+                              ),
+                            ],
+                          )),
+                    ),
+                  ),
+                ]),
+              ),
             ),
           ),
 
@@ -378,7 +381,7 @@ Widget appBarSection(BuildContext context) {
               borderRadius: BorderRadius.circular(12.0),
               color: Colors.transparent,
               child: InkWell(
-                onTap: () {},
+                onTap: () {debugPrint("click");},
                 child: Stack(
                   children: [
                     Center(

@@ -18,6 +18,13 @@ TextStyle boldBlackText = GoogleFonts.dmSans(
   height: 1.3
 );
 
+TextStyle boldWhiteText = GoogleFonts.dmSans(
+  color: whiteColor,
+  fontSize: 20,
+  fontWeight: FontWeight.w700,
+  height: 1.3
+);
+
 TextStyle descriptionText = GoogleFonts.dmSans(
   color: Color(0xff8D8D8D),
   fontSize: 12,

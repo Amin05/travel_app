@@ -11,6 +11,7 @@ class AssetName {
   static String ic_bed = 'assets/ic_bed.png';
   static String ic_love = 'assets/ic_love.png';
   static String ic_menu = 'assets/ic_menu.png';
+  static String ic_more = 'assets/ic_more.png';
   static String ic_notif = 'assets/ic_notif.png';
   static String ic_search = 'assets/ic_search.png';
   static String ic_tv = 'assets/ic_tv.png';
